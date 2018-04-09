@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PC.Appointment>
+
+@{
+    ViewBag.Title = "AppointmentIndex";
+}
+
+<h2>Your Appointments' List</h2>
+
+<p>
+    @Html.ActionLink("Book an appointment", "AppointmentCreate")
+</p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["Success"].ToString()
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("First Name")
+        </th>
+        <th>
+            @Html.DisplayName("Last Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayName("Medical prescription")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+
+        <td>
+            @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", new {id = item.idmedicalPrescription})
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "AppointmentEdit", new { id = item.idAppointment }) |
+            @Html.ActionLink("Details", "AppointmentDetails", new { id = item.idAppointment }) |
+            @Html.ActionLink("Delete", "AppointmentDelete", new { id = item.idAppointment })
+        </td>
+    </tr>
+}
+
+</table>

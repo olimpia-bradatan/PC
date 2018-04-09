@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd9c7e090cdd4795bdf978b446c422ba" Name="Diagram1">
+        <EntityTypeShape EntityType="PCModel.Admin" Width="1.5" PointX="10.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.Appointment" Width="1.5" PointX="8" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.AspNetUser" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.Assistant" Width="1.5" PointX="8" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.Medic" Width="1.5" PointX="5.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.medicalPrescription" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.medicalRecord" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.Patient" Width="1.5" PointX="11" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="PCModel.FK__Admin__idAssista__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Appointme__cardN__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Appointme__idMed__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Appointme__idmed__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__AspNetUse__idRol__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Assistant__idMed__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Patient__idMedic__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.FK__Patient__idmedic__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="PCModel.AspNetUserRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
