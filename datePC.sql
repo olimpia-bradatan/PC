@@ -31,11 +31,11 @@ VALUES (1, 12345678912345678902, '2018-05-28', '10:00', null)
 INSERT INTO Appointment
 VALUES (1, 12345678912345678900, '2018-04-20', '12:00', null)
 
-INSERT INTO Appointment
-VALUES (1, 12345678912345678910, '2018-04-20', '11:00', 1)
-
 INSERT INTO medicalPrescription
 VALUES ('pneumonie', 'pastile', 0)
 
 INSERT INTO medicalPrescription
 VALUES ('pneumonie2', 'pastile2', 1)
+
+INSERT INTO Appointment
+VALUES (1, 12345678912345678910, '2018-04-20', '11:00', 1)

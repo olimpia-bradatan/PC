@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -222,6 +223,9 @@
     <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicalPrescriptionController.cs" />
+    <Compile Include="Controllers\MedicalRecordController.cs" />
+    <Compile Include="Controllers\MedicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +242,7 @@
     <Compile Include="Models\AppointmentComparer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MedicComparer.cs" />
     <Compile Include="Patient.cs">
       <DependentUpon>PCModel.tt</DependentUpon>
     </Compile>
@@ -342,6 +347,21 @@
     <Content Include="Views\Appointment\AppointmentDetails.cshtml" />
     <Content Include="Views\Appointment\AppointmentEdit.cshtml" />
     <Content Include="Views\Appointment\AppointmentDelete.cshtml" />
+    <Content Include="Views\MedicalRecord\MedicalRecordIndex.cshtml" />
+    <Content Include="Views\MedicalRecord\MedicalRecordDetails.cshtml" />
+    <Content Include="Views\MedicalRecord\MedicalRecordCreate.cshtml" />
+    <Content Include="Views\MedicalRecord\MedicalRecordEdit.cshtml" />
+    <Content Include="Views\MedicalRecord\MedicalRecordDelete.cshtml" />
+    <Content Include="Views\MedicalPrescription\MedicalPrescriptionIndex.cshtml" />
+    <Content Include="Views\MedicalPrescription\MedicalPrescriptionDetails.cshtml" />
+    <Content Include="Views\MedicalPrescription\MedicalPrescriptionCreate.cshtml" />
+    <Content Include="Views\MedicalPrescription\MedicalPrescriptionEdit.cshtml" />
+    <Content Include="Views\MedicalPrescription\MedicalPrescriptionDelete.cshtml" />
+    <Content Include="Views\Medic\MedicIndex.cshtml" />
+    <Content Include="Views\Medic\MedicDetails.cshtml" />
+    <Content Include="Views\Medic\MedicCreate.cshtml" />
+    <Content Include="Views\Medic\MedicEdit.cshtml" />
+    <Content Include="Views\Medic\MedicDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PC.medicalRecord>
+
+@{
+    ViewBag.Title = "MedicalRecordIndex";
+}
+
+<h2>Your Medical Record List</h2>
+
+<p>
+    @Html.ActionLink("Create a new Medical Record", "MedicalRecordCreate")
+</p>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["Success"].ToString()
+    </div>
+}
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    &emsp&emsp&emsp&emsp&emsp&emsp&emsp&emsp&emsp&emsp&emsp&emsp <!--->//Should be white space here-->
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "MedicalRecordEdit", new { id = item.idmedicalRecords }) |
+                    @Html.ActionLink("Details", "MedicalRecordDetails", new { id = item.idmedicalRecords }) |
+                    @Html.ActionLink("Delete", "MedicalRecordDelete", new { id = item.idmedicalRecords })
+                </td>
+            </tr>
+        }
+
+    </table>

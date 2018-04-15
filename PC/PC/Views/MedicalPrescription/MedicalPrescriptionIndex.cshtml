@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PC.medicalPrescription>
+
+@{
+    ViewBag.Title = "MedicalPrescriptionIndex";
+}
+
+<h2>Your Medical Prescription List</h2>
+
+<p>
+    @Html.ActionLink("Create a new Medical Prescription", "MedicalPrescriptionCreate")
+</p>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["Success"].ToString()
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnostic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Free)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Free)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = item.idmedicalPrescription }) |
+                @Html.ActionLink("Details", "MedicalPrescriptionDetails", new { id = item.idmedicalPrescription }) |
+                @Html.ActionLink("Delete", "MedicalPrescriptionDelete", new { id = item.idmedicalPrescription })
+            </td>
+        </tr>
+    }
+
+</table>

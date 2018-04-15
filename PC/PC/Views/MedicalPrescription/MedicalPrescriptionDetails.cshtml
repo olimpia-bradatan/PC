@@ -1,0 +1,42 @@
+﻿@model PC.medicalPrescription
+
+@{
+    ViewBag.Title = "MedicalPrescriptionDetails";
+}
+
+<h2>Medical Prescription Details</h2>
+
+<div>
+    <h4>medicalPrescription</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medication)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medication)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Free)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Free)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = Model.idmedicalPrescription }) |
+    @Html.ActionLink("Back to your Medical Prescription List", "MedicalPrescriptionIndex")
+</p>

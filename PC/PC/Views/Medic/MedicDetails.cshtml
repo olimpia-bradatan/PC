@@ -1,0 +1,42 @@
+﻿@model PC.Medic
+
+@{
+    ViewBag.Title = "MedicDetails";
+}
+
+<h2>Medic Details</h2>
+
+<div>
+    <h4>Medic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "MedicEdit", new { id = Model.idMedic }) |
+    @Html.ActionLink("Back to your Medics List", "MedicIndex")
+</p>
