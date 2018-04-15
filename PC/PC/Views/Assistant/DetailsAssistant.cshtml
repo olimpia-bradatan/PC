@@ -1,0 +1,42 @@
+﻿@model PC.Assistant
+
+@{
+    ViewBag.Title = "DetailsAssistant";
+}
+
+<h2>Assistant Details</h2>
+
+<div>
+    <h4>Assistant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditAssistant", new { id = Model.idAssistant }) |
+    @Html.ActionLink("Back to List", "IndexAssistant")
+</p>

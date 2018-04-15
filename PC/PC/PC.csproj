@@ -221,6 +221,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedicalPrescriptionController.cs" />
@@ -240,6 +241,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppointmentComparer.cs" />
+    <Compile Include="Models\AssistantComparer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicComparer.cs" />
@@ -308,7 +310,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -362,6 +366,11 @@
     <Content Include="Views\Medic\MedicCreate.cshtml" />
     <Content Include="Views\Medic\MedicEdit.cshtml" />
     <Content Include="Views\Medic\MedicDelete.cshtml" />
+    <Content Include="Views\Assistant\CreateAssistant.cshtml" />
+    <Content Include="Views\Assistant\IndexAssistant.cshtml" />
+    <Content Include="Views\Assistant\EditAssistant.cshtml" />
+    <Content Include="Views\Assistant\DeleteAssistant.cshtml" />
+    <Content Include="Views\Assistant\DetailsAssistant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
