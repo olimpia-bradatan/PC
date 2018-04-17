@@ -1,0 +1,52 @@
+﻿@model PC.Patient
+
+<div>
+    <h4>Patient Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "PatientEdit", new { id = Model.cardNumber }) |
+    @Html.ActionLink("Back to List", "PatientIndex")
+</p>

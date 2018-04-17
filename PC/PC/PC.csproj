@@ -227,6 +227,7 @@
     <Compile Include="Controllers\MedicalPrescriptionController.cs" />
     <Compile Include="Controllers\MedicalRecordController.cs" />
     <Compile Include="Controllers\MedicController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,6 +246,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicComparer.cs" />
+    <Compile Include="Models\PatientComparer.cs" />
     <Compile Include="Patient.cs">
       <DependentUpon>PCModel.tt</DependentUpon>
     </Compile>
@@ -371,6 +373,11 @@
     <Content Include="Views\Assistant\EditAssistant.cshtml" />
     <Content Include="Views\Assistant\DeleteAssistant.cshtml" />
     <Content Include="Views\Assistant\DetailsAssistant.cshtml" />
+    <Content Include="Views\Patient\PatientCreate.cshtml" />
+    <Content Include="Views\Patient\PatientDelete.cshtml" />
+    <Content Include="Views\Patient\PatientDetails.cshtml" />
+    <Content Include="Views\Patient\PatientEdit.cshtml" />
+    <Content Include="Views\Patient\PatientIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

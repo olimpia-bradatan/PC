@@ -11,7 +11,8 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Patient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +20,46 @@ namespace PC
         {
             this.Appointments = new HashSet<Appointment>();
         }
-    
+
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = false)]
+        [Display(Name = "Nr Card")]
+        [RegularExpression("[0-9]{20,20}", ErrorMessage = "The card number does not have exactly 20 digits and only numbers")]
         public string cardNumber { get; set; }
+
+
+        [Display(Name = "First Name")]
+        [RegularExpression("[a-zA-Z]+", ErrorMessage = "The name must contain only letters")]
+        [Required(AllowEmptyStrings = false)]
         public string firstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [RegularExpression("[a-zA-Z]+", ErrorMessage = "The name must contain only letters")]
+        [Required(AllowEmptyStrings = false)]
         public string lastName { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime birthDate { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
+        [Required(AllowEmptyStrings = false)]
         public string email { get; set; }
+
+
         public Nullable<int> idMedic { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "CNP")]
+        [RegularExpression("[0-9]{13,13}", ErrorMessage = "The CNP does not have exactly 13 digits and only numbers")]
         public string CNP { get; set; }
+
+
         public Nullable<int> idmedicalRecords { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Medic Medic { get; set; }
