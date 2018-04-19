@@ -4,7 +4,7 @@
     ViewBag.Title = "MedicalPrescriptionIndex";
 }
 
-<h2>Your Medical Prescription List</h2>
+<h2>Medical Prescription List</h2>
 
 <p>
     @Html.ActionLink("Create a new Medical Prescription", "MedicalPrescriptionCreate")
@@ -14,6 +14,7 @@
     <div class="alert alert-success alert-dismissible" role="alert">
         @TempData["Success"].ToString()
     </div>
+    TempData["Success"] = null;
 }
 <table class="table">
     <tr>

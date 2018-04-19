@@ -4,11 +4,19 @@
     ViewBag.Title = "IndexAssistant";
 }
 
-<h2>Assistant List</h2>
+<h2>Assistants' List</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateAssistant")
 </p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["Success"].ToString()
+    </div>
+    TempData["Success"] = null;
+}
 <table class="table">
     <tr>
         <th>

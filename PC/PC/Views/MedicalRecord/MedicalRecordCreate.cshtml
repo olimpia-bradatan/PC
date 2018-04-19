@@ -11,6 +11,7 @@
     <div class="alert alert-warning alert-dismissible" role="alert">
         @TempData["Warning"].ToString()
     </div>
+    TempData["Warning"] = null;
 }
 
 @using (Html.BeginForm())

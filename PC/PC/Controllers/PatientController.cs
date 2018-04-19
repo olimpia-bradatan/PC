@@ -44,7 +44,7 @@ namespace PC.Controllers
                 }
                 if (ok == 1)
                 {
-                    //patient.idMedic = 1;
+                    patient.idMedic = 1;
                     db.Patients.Add(patient);
                     db.SaveChanges();
                     TempData["Success"] = "Patient successfully added to the database!";
@@ -87,7 +87,8 @@ namespace PC.Controllers
         {
             try
             {
-                db.Patients.Remove(db.Patients.Find(id));
+                Patient p = db.Patients.Find(id);
+                db.Patients.Remove(p);
                 db.SaveChanges();
                 TempData["Success"] = "Patient  successfully deleted!";
                 return RedirectToAction("PatientIndex");

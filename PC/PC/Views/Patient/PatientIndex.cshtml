@@ -1,8 +1,22 @@
 ﻿@model IEnumerable<PC.Patient>
+@{
+    ViewBag.Title = "PatientIndex";
+}
+
+<h2>Patients List</h2>
 
 <p>
     @Html.ActionLink("Create New", "PatientCreate")
 </p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["Success"].ToString()
+    </div>
+    TempData["Success"] = null;
+}
+
 <table class="table">
     <tr>
         <th>
