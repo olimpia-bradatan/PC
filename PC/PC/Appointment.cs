@@ -35,7 +35,7 @@ namespace PC
         public Nullable<System.TimeSpan> Time { get; set; }
         public Nullable<int> idmedicalPrescription { get; set; }
 
-    
+
         public virtual Patient Patient { get; set; }
         public virtual Medic Medic { get; set; }
         public virtual medicalPrescription medicalPrescription { get; set; }

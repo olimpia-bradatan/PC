@@ -39,3 +39,15 @@ VALUES ('pneumonie2', 'pastile2', 1)
 
 INSERT INTO Appointment
 VALUES (1, 12345678912345678910, '2018-04-20', '11:00', 1)
+
+INSERT INTO AspNetRole
+VALUES ('Admin')
+
+INSERT INTO AspNetRole
+VALUES ('Medic')
+
+INSERT INTO AspNetRole
+VALUES ('Assistant')
+
+INSERT INTO AspNetRole
+VALUES ('Patient')

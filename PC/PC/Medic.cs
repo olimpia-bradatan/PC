@@ -11,7 +11,8 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Medic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,8 +24,14 @@ namespace PC
         }
     
         public int idMedic { get; set; }
+
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
+
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
+
+        [Display(Name = "Email? Username")]
         public string userName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

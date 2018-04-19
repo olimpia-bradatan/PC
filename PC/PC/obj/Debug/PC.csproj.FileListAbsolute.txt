@@ -1,87 +1,3 @@
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\ApplicationInsights.config
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\csc.exe
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\System.Collections.Immutable.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\System.Reflection.Metadata.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\vbc.exe
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\VBCSCompiler.exe
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\roslyn\VBCSCompiler.exe.config
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\PC.dll.config
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\PC.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\PC.pdb
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Antlr3.Runtime.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\EntityFramework.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\EntityFramework.SqlServer.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.Agent.Intercept.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.DependencyCollector.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.PerfCounterCollector.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.Web.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.WindowsServer.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.ApplicationInsights.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.Core.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.Owin.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Host.SystemWeb.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Cookies.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Facebook.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Google.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.OAuth.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Twitter.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Web.Infrastructure.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Newtonsoft.Json.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Owin.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Helpers.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Mvc.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Optimization.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Razor.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.Deployment.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.Razor.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\WebGrease.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.DependencyCollector.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.ServerTelemetryChannel.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.Web.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AI.WindowsServer.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.ApplicationInsights.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Helpers.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Mvc.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Optimization.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.Razor.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.Deployment.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\System.Web.WebPages.Razor.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Antlr3.Runtime.pdb
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Newtonsoft.Json.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\EntityFramework.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\EntityFramework.SqlServer.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.Core.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.Owin.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Host.SystemWeb.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Facebook.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Cookies.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.OAuth.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Google.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.Twitter.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Facultate\anul 3 sem 2\PC\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
-E:\Facultate\anul 3 sem 2\PC\PC\PC\obj\Debug\PC.csproj.CoreCompileInputs.cache
-E:\Facultate\anul 3 sem 2\PC\PC\PC\obj\Debug\PC.csproj.CopyComplete
-E:\Facultate\anul 3 sem 2\PC\PC\PC\obj\Debug\PC.dll
-E:\Facultate\anul 3 sem 2\PC\PC\PC\obj\Debug\PC.pdb
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\ApplicationInsights.config
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\roslyn\csc.exe
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -161,6 +77,5 @@ C:\Users\Oli\Source\Repos\PC\PC\PC\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Oli\Source\Repos\PC\PC\PC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
 C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.dll
 C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.pdb

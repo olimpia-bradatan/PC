@@ -65,6 +65,11 @@ namespace PC.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Health card number")]
+        [RegularExpression("[0-9]{20,20}", ErrorMessage = "The card number must contain exactly 20 digits!")]
+        public string cardNumber { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

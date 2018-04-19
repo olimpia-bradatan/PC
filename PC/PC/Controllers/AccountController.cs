@@ -17,6 +17,7 @@ namespace PC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        PCContext db = new PCContext();
 
         public AccountController()
         {

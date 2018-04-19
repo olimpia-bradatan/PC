@@ -25,7 +25,7 @@ namespace PC
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "First Name")]
-       
+
         public string firstName { get; set; }
 
         [Required(AllowEmptyStrings = false)]
