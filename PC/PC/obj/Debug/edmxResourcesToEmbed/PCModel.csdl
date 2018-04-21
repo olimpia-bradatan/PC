@@ -29,7 +29,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetUse__idRol__2EDAF651" FromRole="AspNetRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetUse__idRol__4B7734FF" FromRole="AspNetRole" ToRole="AspNetUser" />
     <NavigationProperty Name="AspNetUsers1" Relationship="Self.AspNetUserRole" FromRole="AspNetRole" ToRole="AspNetUser" />
   </EntityType>
   <EntityType Name="AspNetUser">
@@ -54,7 +54,7 @@
     <Property Name="birthDay" Type="DateTime" Precision="3" />
     <Property Name="cardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="cnp" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetRole" Relationship="Self.FK__AspNetUse__idRol__2EDAF651" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetRole" Relationship="Self.FK__AspNetUse__idRol__4B7734FF" FromRole="AspNetUser" ToRole="AspNetRole" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRole" FromRole="AspNetUser" ToRole="AspNetRole" />
@@ -203,7 +203,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__AspNetUse__idRol__2EDAF651">
+  <Association Name="FK__AspNetUse__idRol__4B7734FF">
     <End Role="AspNetRole" Type="Self.AspNetRole" Multiplicity="1" />
     <End Role="AspNetUser" Type="Self.AspNetUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -312,7 +312,7 @@
       <End Role="medicalPrescription" EntitySet="medicalPrescriptions" />
       <End Role="Appointment" EntitySet="Appointments" />
     </AssociationSet>
-    <AssociationSet Name="FK__AspNetUse__idRol__2EDAF651" Association="Self.FK__AspNetUse__idRol__2EDAF651">
+    <AssociationSet Name="FK__AspNetUse__idRol__4B7734FF" Association="Self.FK__AspNetUse__idRol__4B7734FF">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>

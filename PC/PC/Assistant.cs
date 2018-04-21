@@ -11,8 +11,7 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Assistant
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,24 +19,13 @@ namespace PC
         {
             this.Admins = new HashSet<Admin>();
         }
-
+    
         public int idAssistant { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "First Name")]
-
         public string firstName { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "Last Name")]
         public string lastName { get; set; }
-
         public Nullable<int> idMedic { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "User Name")]
         public string userName { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Admin> Admins { get; set; }
         public virtual Medic Medic { get; set; }

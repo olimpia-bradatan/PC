@@ -11,8 +11,7 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class medicalPrescription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,15 +19,12 @@ namespace PC
         {
             this.Appointments = new HashSet<Appointment>();
         }
-
+    
         public int idmedicalPrescription { get; set; }
-        [Display(Name = "Diagnostic")]
         public string Diagnostic { get; set; }
-        [Display(Name = "Medication")]
         public string Medication { get; set; }
-        [Display(Name = "Free")]
         public bool Free { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
     }
