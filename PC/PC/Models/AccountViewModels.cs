@@ -46,11 +46,26 @@ namespace PC.Models
         public string Email { get; set; }
     }
 
+    public class LoginPatientViewModel
+    {
+        [Required]
+        [Display(Name = "Health card number")]
+        [RegularExpression("[0-9]{20,20}", ErrorMessage = "The card number must contain exactly 20 digits!")]
+        public string cardNumber { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
+    }
     public class LoginViewModel
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
@@ -68,11 +83,6 @@ namespace PC.Models
         [Display(Name = "Health card number")]
         [RegularExpression("[0-9]{20,20}", ErrorMessage = "The card number must contain exactly 20 digits!")]
         public string cardNumber { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

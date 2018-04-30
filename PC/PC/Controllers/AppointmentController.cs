@@ -24,6 +24,7 @@ namespace PC.Controllers
         }
 
         // GET: Appointment/Create
+        [Authorize(Roles = "Patient")]
         public ActionResult AppointmentCreate()
         {
             return View();
@@ -31,6 +32,7 @@ namespace PC.Controllers
 
         // POST: Appointment/Create
         [HttpPost]
+        [Authorize(Roles = "Patient")]
         public ActionResult AppointmentCreate(Appointment appointment)
         {
             if (ModelState.IsValid)
@@ -61,6 +63,7 @@ namespace PC.Controllers
         }
 
         // GET: Appointment/Edit/5
+        [Authorize(Roles = "Assistant")]
         public ActionResult AppointmentEdit(int id)
         {
             return View(db.Appointments.Find(id));
@@ -68,22 +71,17 @@ namespace PC.Controllers
 
         // POST: Appointment/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Assistant")]
         public ActionResult AppointmentEdit(int id, Appointment appointment)
         {
-           // try
-            //{
                 db.Entry(appointment).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 TempData["Success"] = "Changes successfully applied to your appointment!";
-                return RedirectToAction("AppointmentIndex");
-            //}
-            //catch
-            //{
-             //   return View();
-            //}
+                return RedirectToAction("AppointmentIndex");          
         }
 
         // GET: Appointment/Delete/5
+        [Authorize(Roles = "Patient")]
         public ActionResult AppointmentDelete(int id)
         {
             return View(db.Appointments.Find(id));
@@ -91,6 +89,7 @@ namespace PC.Controllers
 
         // POST: Appointment/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Patient")]
         public ActionResult AppointmentDelete(int id, Appointment appointment)
         {
             try

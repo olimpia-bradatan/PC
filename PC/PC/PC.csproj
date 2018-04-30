@@ -228,6 +228,8 @@
     <Compile Include="Controllers\MedicalRecordController.cs" />
     <Compile Include="Controllers\MedicController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="CustomLibraries\CustomDecrypt.cs" />
+    <Compile Include="CustomLibraries\CustomEncrypt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

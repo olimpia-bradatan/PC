@@ -11,6 +11,7 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: Patient
+        [Authorize(Roles = "Patient, Assistant")]
         public ActionResult PatientIndex()
         {
             return View(db.Patients.ToList());
@@ -23,6 +24,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Create
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientCreate()
         {
             return View();
@@ -30,6 +32,7 @@ namespace PC.Controllers
 
         // POST: Patient/Create
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientCreate(Patient patient)
         {
             if (ModelState.IsValid)
@@ -60,6 +63,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Edit/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientEdit(String id)
         {
             return View(db.Patients.Find(id));
@@ -67,6 +71,7 @@ namespace PC.Controllers
 
         // POST: Patient/Edit/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientEdit(String id, Patient patient)
         {
             db.Entry(patient).State = System.Data.Entity.EntityState.Modified;
@@ -76,6 +81,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Delete/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientDelete(String id)
         {
             return View(db.Patients.Find(id));
@@ -83,6 +89,7 @@ namespace PC.Controllers
 
         // POST: Patient/Delete/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult PatientDelete(String id, Patient patient)
         {
             try

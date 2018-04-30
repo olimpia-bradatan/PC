@@ -37,29 +37,70 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.birthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CNP)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "PatientEdit", new { id=item.cardNumber }) |
-            @Html.ActionLink("Details", "PatientDetails", new { id=item.cardNumber }) |
-            @Html.ActionLink("Delete", "PatientDelete", new { id=item.cardNumber })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        var name = item.firstName + " " + item.lastName;
+        if (name == User.Identity.Name)
+        {
 
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.birthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNP)
+                </td>
+                @if (!User.IsInRole("Patient"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "PatientEdit", new { id = item.cardNumber }) |
+                        @Html.ActionLink("Details", "PatientDetails", new { id = item.cardNumber }) |
+                        @Html.ActionLink("Delete", "PatientDelete", new { id = item.cardNumber })
+                    </td>
+                }
+            </tr>
+        }
+        else
+        {
+            if (User.IsInRole("Assistant"))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.birthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CNP)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "PatientEdit", new { id = item.cardNumber }) |
+                        @Html.ActionLink("Details", "PatientDetails", new { id = item.cardNumber }) |
+                        @Html.ActionLink("Delete", "PatientDelete", new { id = item.cardNumber })
+                    </td>
+                </tr>
+
+            }
+        }
+    }
 </table>
+
+       <p>
+            @Html.ActionLink("Go back to home", "Index", "Home")
+       </p>

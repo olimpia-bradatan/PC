@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 namespace PC.Controllers
@@ -22,6 +19,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Create
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionCreate()
         {
             return View();
@@ -29,15 +27,12 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Create
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionCreate(medicalPrescription medicalPrescription)
         {
             if (ModelState.IsValid)
             {
                 int ok = 1;
-                /*if (db.medicalRecords.Count() > 0)
-                {
-                            ok = 0;
-                }*/
                 if (ok == 1)
                 {
                     medicalPrescription.idmedicalPrescription = 1;
@@ -56,6 +51,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Edit/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionEdit(int id)
         {
             return View(db.medicalPrescriptions.Find(id));
@@ -63,6 +59,7 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Edit/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionEdit(int id, medicalPrescription medicalPrescription)
         {
             db.Entry(medicalPrescription).State = System.Data.Entity.EntityState.Modified;
@@ -72,6 +69,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Delete/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionDelete(int id)
         {
             return View(db.medicalPrescriptions.Find(id));
@@ -79,6 +77,7 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Delete/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalPrescriptionDelete(int id, medicalPrescription medicalPrescription)
         {
             try

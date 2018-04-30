@@ -9,10 +9,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PC.Models;
+using System.Data.Entity.Validation;
+using PC.CustomLibraries;
 
 namespace PC.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -23,7 +24,7 @@ namespace PC.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +36,9 @@ namespace PC.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -54,9 +55,9 @@ namespace PC.Controllers
         }
 
         //
-        // GET: /Account/Login
+        // GET: /Account/LoginPatient
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult LoginPatient(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -64,34 +65,34 @@ namespace PC.Controllers
 
         //
         // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+        /*  [HttpPost]
+          [AllowAnonymous]
+          [ValidateAntiForgeryToken]
+          public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+          {
+              if (!ModelState.IsValid)
+              {
+                  return View(model);
+              }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
-        }
-
+              // This doesn't count login failures towards account lockout
+              // To enable password failures to trigger account lockout, change to shouldLockout: true
+              var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+              switch (result)
+              {
+                  case SignInStatus.Success:
+                      return RedirectToLocal(returnUrl);
+                  case SignInStatus.LockedOut:
+                      return View("Lockout");
+                  case SignInStatus.RequiresVerification:
+                      return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                  case SignInStatus.Failure:
+                  default:
+                      ModelState.AddModelError("", "Invalid login attempt.");
+                      return View(model);
+              }
+          }
+          */
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -121,7 +122,7 @@ namespace PC.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -145,34 +146,216 @@ namespace PC.Controllers
 
         //
         // POST: /Account/Register
+        /* [HttpPost]
+         [AllowAnonymous]
+         [ValidateAntiForgeryToken]
+         public async Task<ActionResult> Register(RegisterViewModel model)
+         {
+             if (ModelState.IsValid)
+             {
+                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                 var result = await UserManager.CreateAsync(user, model.Password);
+                 if (result.Succeeded)
+                 {
+                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                     // Send an email with this link
+                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                     return RedirectToAction("Index", "Home");
+                 }
+                 AddErrors(result);
+             }
+
+             // If we got this far, something failed, redisplay form
+             return View(model);
+         }
+         */
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public ActionResult LoginPatient(LoginPatientViewModel user)
         {
-            if (ModelState.IsValid)
+
+            if (!ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
+                return View(user);
             }
+            var cardNumberCheck = db.AspNetUsers.FirstOrDefault(u => u.cardNumber == user.cardNumber);
+            if (cardNumberCheck != null)
+            {
+                if (db.Patients.Find(user.cardNumber) != null)
+                {
+                    var getName = db.Patients.Where(u => u.cardNumber == user.cardNumber).Select(u => u.firstName);
+                    var materName = getName.ToList();
+                    var firstName = materName[0];
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+                    var getName1 = db.Patients.Where(u => u.cardNumber == user.cardNumber).Select(u => u.lastName);
+                    var materName1 = getName1.ToList();
+                    var lastName = materName1[0];
+
+                    var getPassword = db.AspNetUsers.Where(u => u.cardNumber == user.cardNumber).Select(u => u.Password);
+                    var materializePassword = getPassword.ToList();
+                    var password = materializePassword[0];
+                    var encryptedPass = CustomEncrypt.Encrypt(user.Password);
+                    if (encryptedPass == password)
+                    {
+
+                        var getCardNumber = db.AspNetUsers.Where(u => u.cardNumber == user.cardNumber).Select(u => u.cardNumber);
+                        var materializeEmail = getCardNumber.ToList();
+                        var cardNumber = materializeEmail[0];
+
+                        var idRole = db.AspNetUsers.Where(u => u.cardNumber == user.cardNumber).Select(u => u.idRole);
+                        var materializeRole = idRole.ToList();
+                        var role = materializeRole[0];
+
+                        var roleName = db.AspNetRoles.Find(role).Name.ToString();
+
+                        var identity = new ClaimsIdentity(new[] {
+                        new Claim(ClaimTypes.Name, firstName +" "+ lastName),
+                        new Claim(ClaimTypes.Email, cardNumber),
+                        new Claim(ClaimTypes.Role, roleName)
+                }, "ApplicationCookie");
+                        var ctx = Request.GetOwinContext();
+                        var accountManager = ctx.Authentication;
+                        accountManager.SignIn(identity);
+                        TempData["SuccessRegistration"] = "You signed in into your account as ";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "The username or password is incorrect");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The username or password is incorrect");
+
+                }
+            }
+            return View(user);
         }
 
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var encryptedPassword = CustomEncrypt.Encrypt(user.Password);
+
+                    if (db.Patients.Find(user.cardNumber) != null)
+                    {
+                        if (db.AspNetUsers.Any(o => o.cardNumber == user.cardNumber))
+                        {
+                            TempData["UserAlreadyExists"] = "This user already exists";
+                            return View(user);
+                        }
+                        var userDb = new AspNetUser();
+                        userDb.cardNumber = user.cardNumber;
+                        userDb.Password = encryptedPassword;
+                        userDb.Email = db.Patients.Find(user.cardNumber).email;
+                        userDb.idRole = 4;
+                        db.AspNetUsers.Add(userDb);
+                        db.SaveChanges();
+                        TempData["SuccessRegistration"] = "You registered successfully";
+                        return RedirectToAction("LoginPatient", "Account");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "You entered a wrong health card number";
+                        return View(user);
+                    }
+                }
+                else
+                {
+                    return View(user);
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+        }
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Login(LoginViewModel user)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var emailCheck = db.AspNetUsers.FirstOrDefault(u => u.Email == user.Email && u.idRole != 4);
+            if (emailCheck != null)
+            {
+                var getPassword = db.AspNetUsers.Where(u => u.Email == user.Email).Select(u => u.Password);
+                var materializePassword = getPassword.ToList();
+                var password = materializePassword[0];
+                var encryptedPass = CustomEncrypt.Encrypt(user.Password);
+                if (encryptedPass == password)
+                {
+                    var getEmail = db.AspNetUsers.Where(u => u.Email == user.Email).Select(u => u.Email);
+                    var materializeEmail = getEmail.ToList();
+                    var email = materializeEmail[0];
+
+                    var idRole = db.AspNetUsers.Where(u => u.Email == user.Email).Select(u => u.idRole);
+                    var materializeRole = idRole.ToList();
+                    var role = materializeRole[0];
+
+                    var roleName = db.AspNetRoles.Find(role).Name.ToString();
+
+                    var identity = new ClaimsIdentity(new[] {
+                new Claim(ClaimTypes.Email, email),
+                new Claim(ClaimTypes.Name, email),
+                new Claim(ClaimTypes.Role, roleName)
+                }, "ApplicationCookie");
+                    var ctx = Request.GetOwinContext();
+                    var accountManager = ctx.Authentication;
+                    accountManager.SignIn(identity);
+                    TempData["SuccessRegistration"] = "You signed in into your account as ";
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The username or password is incorrect");
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "The username or password is incorrect");
+
+            }
+            return View();
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

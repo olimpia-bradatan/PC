@@ -17,13 +17,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("Patient"))
+                    {
+                        <li>@Html.ActionLink("My profile", "PatientIndex", "Patient")</li>
+                        <li>@Html.ActionLink("Create appointment", "AppointmentCreate", "Appointment")</li>
+                        <li>@Html.ActionLink("My medical record", "MedicalRecordIndex", "MedicalRecord")</li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Medics", "MedicIndex", "Medic")</li>
+                        <li>@Html.ActionLink("Assistants", "IndexAssistant", "Assistant")</li>
+                    }
+                    @if (User.IsInRole("Medic"))
+                    {
+                        <li>@Html.ActionLink("Appointments", "AppointmentIndex", "Appointment")</li>
+                    }
+                    @if (User.IsInRole("Assistant"))
+                    {
+                        <li>@Html.ActionLink("Manage appointment", "AppointmentIndex", "Appointment")</li>
+                        <li>@Html.ActionLink("Manage patients", "PatientIndex", "Patient")</li>
+                        <li>@Html.ActionLink("Manage prescriptions", "MedicalPrescriptionIndex", "MedicalPrescription")</li>
+                    }
+                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +51,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Cabinet Medical</p>
         </footer>
     </div>
 

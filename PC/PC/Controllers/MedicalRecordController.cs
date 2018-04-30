@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PC.Controllers
 {
+    
     public class MedicalRecordController : Controller
     {
         PCContext db = new PCContext();
@@ -22,6 +23,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalRecord/Create
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordCreate()
         {
             return View();
@@ -29,6 +31,7 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Create
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordCreate(medicalRecord medicalRecord)
         {
             if (ModelState.IsValid)
@@ -56,6 +59,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalRecord/Edit/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordEdit(int id)
         {
             return View(db.medicalRecords.Find(id));
@@ -63,6 +67,7 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Edit/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordEdit(int id, medicalRecord medicalRecord)
         {
             //try
@@ -80,6 +85,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalRecord/Delete/5
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordDelete(int id)
         {
             return View(db.medicalRecords.Find(id));
@@ -87,6 +93,7 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Delete/5
         [HttpPost]
+        [Authorize(Users = "assistant@assistant.com")]
         public ActionResult MedicalRecordDelete(int id, medicalRecord medicalRecord)
         {
             try
