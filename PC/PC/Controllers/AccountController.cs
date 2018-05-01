@@ -201,6 +201,9 @@ namespace PC.Controllers
                     var encryptedPass = CustomEncrypt.Encrypt(user.Password);
                     if (encryptedPass == password)
                     {
+                        var getId = db.AspNetUsers.Where(u => u.cardNumber == user.cardNumber).Select(u => u.Id);
+                        var materializeId = getId.ToList();
+                        var id = materializeId[0];
 
                         var getCardNumber = db.AspNetUsers.Where(u => u.cardNumber == user.cardNumber).Select(u => u.cardNumber);
                         var materializeEmail = getCardNumber.ToList();
@@ -213,6 +216,7 @@ namespace PC.Controllers
                         var roleName = db.AspNetRoles.Find(role).Name.ToString();
 
                         var identity = new ClaimsIdentity(new[] {
+                            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
                         new Claim(ClaimTypes.Name, firstName +" "+ lastName),
                         new Claim(ClaimTypes.Email, cardNumber),
                         new Claim(ClaimTypes.Role, roleName)

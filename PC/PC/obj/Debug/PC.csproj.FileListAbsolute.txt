@@ -170,3 +170,4 @@ C:\Users\Oli\Source\Repos\PC\PC\PC\bin\Microsoft.Owin.Security.MicrosoftAccount.
 C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.dll
 C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.pdb
 C:\Users\Oli\Source\Repos\PC\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
+C:\Users\Robert\Source\Repos\PC3\PC\PC\obj\Debug\PC.csprojResolveAssemblyReference.cache
