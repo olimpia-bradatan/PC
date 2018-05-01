@@ -4,18 +4,49 @@
 }
 <h2>ConvertMedicalPrescription</h2>
 
-<div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.idmedicalPrescription, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.idmedicalPrescription, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.idmedicalPrescription, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Convert to PDF" class="btn btn-default" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.idmedicalPrescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.idmedicalPrescription, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.idmedicalPrescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Diagnostic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Diagnostic, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.Diagnostic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medication, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Medication, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.Medication, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Free, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(model => model.Free, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.Free, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Convert to PDF" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
+}

@@ -45,6 +45,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itext.barcodes">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.font_asian">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.font_asian.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.hyph">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.hyph.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign">
+      <HintPath>..\..\..\..\..\Downloads\iText7-dotnet-7.0.0\iText7-dotnet-7.0.0\itext.sign.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -221,6 +248,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\ArchiveDateController.cs" />
     <Compile Include="Controllers\AssistantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,6 +272,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppointmentComparer.cs" />
+    <Compile Include="Models\Archive.cs" />
     <Compile Include="Models\AssistantComparer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -380,6 +409,7 @@
     <Content Include="Views\Patient\PatientDetails.cshtml" />
     <Content Include="Views\Patient\PatientEdit.cshtml" />
     <Content Include="Views\Patient\PatientIndex.cshtml" />
+    <Content Include="Views\ArchiveDate\ConvertMedicalPrescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

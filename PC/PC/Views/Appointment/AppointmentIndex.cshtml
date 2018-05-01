@@ -54,7 +54,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", new {id = item.idmedicalPrescription})
+            @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", "MedicalPrescription", new {id = item.idmedicalPrescription}, null)
+            @Html.ActionLink("Download PDF", "ConvertMedicalPrescription", "ArchiveDate", new { idmedicalPrescription = item.idmedicalPrescription }, null)
         </td>
 
         <td>
