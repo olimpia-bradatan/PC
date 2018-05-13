@@ -18,6 +18,7 @@ namespace PC
         public Patient()
         {
             this.Appointments = new HashSet<Appointment>();
+            this.medicalRecords = new HashSet<medicalRecord>();
         }
     
         public string cardNumber { get; set; }
@@ -27,11 +28,11 @@ namespace PC
         public string email { get; set; }
         public Nullable<int> idMedic { get; set; }
         public string CNP { get; set; }
-        public Nullable<int> idmedicalRecords { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Medic Medic { get; set; }
-        public virtual medicalRecord medicalRecord { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<medicalRecord> medicalRecords { get; set; }
     }
 }

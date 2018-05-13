@@ -36,6 +36,5 @@ namespace PC
         public virtual DbSet<medicalPrescription> medicalPrescriptions { get; set; }
         public virtual DbSet<medicalRecord> medicalRecords { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

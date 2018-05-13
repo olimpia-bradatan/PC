@@ -35,9 +35,11 @@ namespace PC.Controllers
                 int ok = 1;
                 if (ok == 1)
                 {
-                    medicalPrescription.idmedicalPrescription = 1;
                     db.medicalPrescriptions.Add(medicalPrescription);
                     db.SaveChanges();
+                    //string disease = medicalPrescription.Diagnostic;
+                    //medicalRecord m = db.medicalRecords.Find
+                    //db.Entry(m).State = System.Data.Entity.EntityState.Modified;
                     TempData["Success"] = "Medical Prescription successfully submitted!";
                     return RedirectToAction("MedicalPrescriptionIndex");
                 }
