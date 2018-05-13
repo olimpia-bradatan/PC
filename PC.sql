@@ -286,3 +286,28 @@ VALUES (4,'18582742104908327384', '2018-07-09', '17:15:00', 4);
 
 INSERT INTO [dbo].[Appointment]
 VALUES (4,'18582742104908327384', '2018-07-09', '17:15:00', 4);
+
+--Populating AspNetRole
+
+INSERT INTO [dbo].[AspNetRole]
+VALUES('Admin');
+
+INSERT INTO [dbo].[AspNetRole]
+VALUES('Assistant');
+
+INSERT INTO [dbo].[AspNetRole]
+VALUES('Medic');
+
+INSERT INTO [dbo].[AspNetRole]
+VALUES('Patient');
+
+--Populating AspNetUser
+
+INSERT INTO [dbo].[AspNetUser]
+VALUES ('medic@gmail.com', null, 'cdimBKgXwKi01+gUyvdbDg==', null, null, null, null, null, null, null, null, 3, null, null, null, 84724949380048382734, null  );
+
+INSERT INTO [dbo].[AspNetUser]
+VALUES ('asisstant@gmail.com', null, 'cdimBKgXwKi01+gUyvdbDg==', null, null, null, null, null, null, null, null, 2, null, null, null, 84724949380048382734, null  );
+
+INSERT INTO [dbo].[AspNetUser]
+VALUES ('admin@gmail.com', null, 'cdimBKgXwKi01+gUyvdbDg==', null, null, null, null, null, null, null, null, 1, null, null, null, 84724949380048382734, null  );
