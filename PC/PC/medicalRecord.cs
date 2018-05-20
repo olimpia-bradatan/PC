@@ -11,7 +11,8 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class medicalRecord
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +23,29 @@ namespace PC
     
         public int idmedicalRecords { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        [Display(Name = "Vaccinations")]
         public string vaccinations { get; set; }
+
+        [Display(Name = "Diseases")]
         public string diseases { get; set; }
+
+        [Display(Name = "Previous diseases")]
         public string previousDiseases { get; set; }
+
+        [Display(Name = "Medication")]
         public string meds { get; set; }
+
+        [Display(Name = "Allergies")]
         public string allergies { get; set; }
+
+        [Display(Name = "Last control date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string lastControl { get; set; }
+
+        [Display(Name = "Another information")]
         public string info { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patient> Patients { get; set; }
     }

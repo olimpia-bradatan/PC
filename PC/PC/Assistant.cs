@@ -11,7 +11,8 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Assistant
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,19 @@ namespace PC
         }
     
         public int idAssistant { get; set; }
+
+        [Display(Name = "First Name*")]
+        [Required]
         public string firstName { get; set; }
+
+        [Display(Name = "Last Name*")]
+        [Required]
         public string lastName { get; set; }
         public Nullable<int> idMedic { get; set; }
+
+        [Display(Name = "Email*")]
+        [DataType(DataType.EmailAddress)]
+        [Required]
         public string userName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
