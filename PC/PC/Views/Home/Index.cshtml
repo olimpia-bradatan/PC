@@ -9,16 +9,19 @@
 @if (TempData["SuccessRegistration"] != null)
 {
     <div class="alert alert-success" role="alert">
-         @TempData["SuccessRegistration"].ToString() @User.Identity.Name 
+        @TempData["SuccessRegistration"].ToString() @User.Identity.Name
     </div>
     TempData["SuccessRegistration"] = null;
 }
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
-            <h6>Register with a new account</h6>
-            <button type="button" class="btn btn-primary" onclick="location.href= '@Url.Action("Register", "Account")'">Register</button>
-        </div>
+        @if (!User.Identity.IsAuthenticated || User.IsInRole("Patient"))
+        {
+            <div class="col-sm-4">
+                <h6>New pacient? Register here</h6>
+                <button type="button" class="btn btn-primary" onclick="location.href= '@Url.Action("Register", "Account")'">Register</button>
+            </div>
+        }
         @if (!User.Identity.IsAuthenticated)
         {
             <div class="col-sm-4">

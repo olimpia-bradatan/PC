@@ -67,7 +67,16 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "MedicalRecordEdit", new { id = Model.idmedicalRecords }) |
-    @Html.ActionLink("Back to your Medical Record List", "MedicalRecordIndex")
-</p>
+@if (User.IsInRole("Medic") || User.IsInRole("Assistant"))
+{
+    <p>
+        @Html.ActionLink("Edit", "MedicalRecordEdit", new { id = Model.idmedicalRecords }) |
+        @Html.ActionLink("Back to the patients list", "PatientIndex", "Patient")
+    </p>
+}
+@if (User.IsInRole("Patient"))
+{
+    <p>
+        @Html.ActionLink("Back to my profile", "PatientIndex", "Patient")
+    </p>
+}

@@ -3,12 +3,21 @@
     ViewBag.Title = "PatientIndex";
 }
 
-<h2>Patients List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "PatientCreate")
-</p>
 
+@if (!User.IsInRole("Patient"))
+{
+
+    <h2>Patients List</h2>
+    <p>
+        @Html.ActionLink("Create New", "PatientCreate")
+    </p>
+}
+
+@if (User.IsInRole("Patient"))
+{
+    <h2>My Details</h2>
+}
 @if (TempData["Success"] != null)
 {
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -34,7 +43,12 @@
         <th>
             @Html.DisplayNameFor(model => model.CNP)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.cardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicalRecord)
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -59,19 +73,26 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CNP)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cardNumber)
+                </td>
                 @if (!User.IsInRole("Patient"))
                 {
                     <td>
                         @Html.ActionLink("Edit", "PatientEdit", new { id = item.cardNumber }) |
                         @Html.ActionLink("Details", "PatientDetails", new { id = item.cardNumber }) |
-                        @Html.ActionLink("Delete", "PatientDelete", new { id = item.cardNumber })
+                        @Html.ActionLink("Delete", "PatientDelete", new { id = item.cardNumber }) |
                     </td>
                 }
+                <td>
+                    @Html.ActionLink("See medical record", "MedicalRecordDetails", "MedicalRecord", new { id = item.idmedicalRecords }, null)
+                </td>
+
             </tr>
         }
         else
         {
-            if (User.IsInRole("Assistant"))
+            if (User.IsInRole("Assistant") || User.IsInRole("Medic"))
             {
                 <tr>
                     <td>
@@ -90,9 +111,15 @@
                         @Html.DisplayFor(modelItem => item.CNP)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.cardNumber)
+                    </td>
+                    <td>
                         @Html.ActionLink("Edit", "PatientEdit", new { id = item.cardNumber }) |
                         @Html.ActionLink("Details", "PatientDetails", new { id = item.cardNumber }) |
                         @Html.ActionLink("Delete", "PatientDelete", new { id = item.cardNumber })
+                    </td>
+                    <td>
+                        @Html.ActionLink("See medical record", "MedicalRecordDetails", "MedicalRecord", new { id = item.idmedicalRecords }, null)
                     </td>
                 </tr>
 
@@ -101,6 +128,6 @@
     }
 </table>
 
-       <p>
-            @Html.ActionLink("Go back to home", "Index", "Home")
-       </p>
+<p>
+    @Html.ActionLink("Go back to home", "Index", "Home")
+</p>

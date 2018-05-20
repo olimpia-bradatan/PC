@@ -8,18 +8,21 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: Assistant
+        [Authorize(Roles = "Admin")]
         public ActionResult IndexAssistant()
         {
             return View(db.Assistants.ToList());
         }
 
         // GET: Assistant/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult DetailsAssistant(int id)
         {
             return View(db.Assistants.Find(id));
         }
 
         // GET: Assistant/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateAssistant()
         {
             return View();
@@ -27,6 +30,7 @@ namespace PC.Controllers
 
         // POST: Assistant/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateAssistant(Assistant assistant)
         {
             try
@@ -65,6 +69,7 @@ namespace PC.Controllers
         }
 
         // GET: Assistant/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult EditAssistant(int id)
         {
             return View(db.Assistants.Find(id));
@@ -72,6 +77,7 @@ namespace PC.Controllers
 
         // POST: Assistant/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditAssistant(int id, Assistant assistant)
         {
             try
@@ -90,6 +96,7 @@ namespace PC.Controllers
         }
 
         // GET: Assistant/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteAssistant(int id)
         {
             return View(db.Assistants.Find(id));
@@ -97,6 +104,7 @@ namespace PC.Controllers
 
         // POST: Assistant/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteAssistant(int id, Assistant assistant)
         {
             try

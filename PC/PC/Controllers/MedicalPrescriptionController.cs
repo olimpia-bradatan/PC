@@ -7,6 +7,7 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: MedicalPrescription
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult MedicalPrescriptionIndex()
         {
             return View(db.medicalPrescriptions.ToList());
@@ -19,7 +20,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Create
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalPrescriptionCreate()
         {
             return View();
@@ -27,7 +28,7 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Create
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalPrescriptionCreate(medicalPrescription medicalPrescription)
         {
             if (ModelState.IsValid)
@@ -35,11 +36,9 @@ namespace PC.Controllers
                 int ok = 1;
                 if (ok == 1)
                 {
+                    medicalPrescription.idmedicalPrescription = 1;
                     db.medicalPrescriptions.Add(medicalPrescription);
                     db.SaveChanges();
-                    //string disease = medicalPrescription.Diagnostic;
-                    //medicalRecord m = db.medicalRecords.Find
-                    //db.Entry(m).State = System.Data.Entity.EntityState.Modified;
                     TempData["Success"] = "Medical Prescription successfully submitted!";
                     return RedirectToAction("MedicalPrescriptionIndex");
                 }
@@ -53,7 +52,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Edit/5
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult MedicalPrescriptionEdit(int id)
         {
             return View(db.medicalPrescriptions.Find(id));
@@ -61,7 +60,7 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Edit/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult MedicalPrescriptionEdit(int id, medicalPrescription medicalPrescription)
         {
             db.Entry(medicalPrescription).State = System.Data.Entity.EntityState.Modified;
@@ -71,7 +70,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalPrescription/Delete/5
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalPrescriptionDelete(int id)
         {
             return View(db.medicalPrescriptions.Find(id));
@@ -79,7 +78,7 @@ namespace PC.Controllers
 
         // POST: MedicalPrescription/Delete/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalPrescriptionDelete(int id, medicalPrescription medicalPrescription)
         {
             try

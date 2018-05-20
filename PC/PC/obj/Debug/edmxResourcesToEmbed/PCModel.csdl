@@ -7,7 +7,7 @@
     <Property Name="idAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idAssistant" Type="Int32" />
-    <NavigationProperty Name="Assistant" Relationship="Self.FK__Admin__idAssista__5DCAEF64" FromRole="Admin" ToRole="Assistant" />
+    <NavigationProperty Name="Assistant" Relationship="Self.FK__Admin__idAssista__15502E78" FromRole="Admin" ToRole="Assistant" />
   </EntityType>
   <EntityType Name="Appointment">
     <Key>
@@ -19,9 +19,9 @@
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="Time" Type="Time" Precision="7" />
     <Property Name="idmedicalPrescription" Type="Int32" />
-    <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__cardN__693CA210" FromRole="Appointment" ToRole="Patient" />
-    <NavigationProperty Name="Medic" Relationship="Self.FK__Appointme__idMed__68487DD7" FromRole="Appointment" ToRole="Medic" />
-    <NavigationProperty Name="medicalPrescription" Relationship="Self.FK__Appointme__idmed__6A30C649" FromRole="Appointment" ToRole="medicalPrescription" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__cardN__20C1E124" FromRole="Appointment" ToRole="Patient" />
+    <NavigationProperty Name="Medic" Relationship="Self.FK__Appointme__idMed__1FCDBCEB" FromRole="Appointment" ToRole="Medic" />
+    <NavigationProperty Name="medicalPrescription" Relationship="Self.FK__Appointme__idmed__21B6055D" FromRole="Appointment" ToRole="medicalPrescription" />
   </EntityType>
   <EntityType Name="AspNetRole">
     <Key>
@@ -29,7 +29,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetUse__idRol__6EF57B66" FromRole="AspNetRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetUse__idRol__267ABA7A" FromRole="AspNetRole" ToRole="AspNetUser" />
     <NavigationProperty Name="AspNetUsers1" Relationship="Self.AspNetUserRole" FromRole="AspNetRole" ToRole="AspNetUser" />
   </EntityType>
   <EntityType Name="AspNetUser">
@@ -54,7 +54,7 @@
     <Property Name="birthDay" Type="DateTime" Precision="3" />
     <Property Name="cardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="cnp" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetRole" Relationship="Self.FK__AspNetUse__idRol__6EF57B66" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetRole" Relationship="Self.FK__AspNetUse__idRol__267ABA7A" FromRole="AspNetUser" ToRole="AspNetRole" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRole" FromRole="AspNetUser" ToRole="AspNetRole" />
@@ -89,8 +89,8 @@
     <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idMedic" Type="Int32" />
     <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__idAssista__5DCAEF64" FromRole="Assistant" ToRole="Admin" />
-    <NavigationProperty Name="Medic" Relationship="Self.FK__Assistant__idMed__5AEE82B9" FromRole="Assistant" ToRole="Medic" />
+    <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__idAssista__15502E78" FromRole="Assistant" ToRole="Admin" />
+    <NavigationProperty Name="Medic" Relationship="Self.FK__Assistant__idMed__1273C1CD" FromRole="Assistant" ToRole="Medic" />
   </EntityType>
   <EntityType Name="Medic">
     <Key>
@@ -100,9 +100,9 @@
     <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__idMed__68487DD7" FromRole="Medic" ToRole="Appointment" />
-    <NavigationProperty Name="Assistants" Relationship="Self.FK__Assistant__idMed__5AEE82B9" FromRole="Medic" ToRole="Assistant" />
-    <NavigationProperty Name="Patients" Relationship="Self.FK__Patient__idMedic__60A75C0F" FromRole="Medic" ToRole="Patient" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__idMed__1FCDBCEB" FromRole="Medic" ToRole="Appointment" />
+    <NavigationProperty Name="Assistants" Relationship="Self.FK__Assistant__idMed__1273C1CD" FromRole="Medic" ToRole="Assistant" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK__Patient__idMedic__1A14E395" FromRole="Medic" ToRole="Patient" />
   </EntityType>
   <EntityType Name="medicalPrescription">
     <Key>
@@ -112,7 +112,7 @@
     <Property Name="Diagnostic" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Medication" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Free" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__idmed__6A30C649" FromRole="medicalPrescription" ToRole="Appointment" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__idmed__21B6055D" FromRole="medicalPrescription" ToRole="Appointment" />
   </EntityType>
   <EntityType Name="medicalRecord">
     <Key>
@@ -127,8 +127,7 @@
     <Property Name="allergies" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="lastControl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="info" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="cardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Patient" Relationship="Self.FK__medicalRe__cardN__6383C8BA" FromRole="medicalRecord" ToRole="Patient" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK__Patient__idmedic__1B0907CE" FromRole="medicalRecord" ToRole="Patient" />
   </EntityType>
   <EntityType Name="Patient">
     <Key>
@@ -141,11 +140,12 @@
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idMedic" Type="Int32" />
     <Property Name="CNP" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__cardN__693CA210" FromRole="Patient" ToRole="Appointment" />
-    <NavigationProperty Name="Medic" Relationship="Self.FK__Patient__idMedic__60A75C0F" FromRole="Patient" ToRole="Medic" />
-    <NavigationProperty Name="medicalRecords" Relationship="Self.FK__medicalRe__cardN__6383C8BA" FromRole="Patient" ToRole="medicalRecord" />
+    <Property Name="idmedicalRecords" Type="Int32" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__cardN__20C1E124" FromRole="Patient" ToRole="Appointment" />
+    <NavigationProperty Name="Medic" Relationship="Self.FK__Patient__idMedic__1A14E395" FromRole="Patient" ToRole="Medic" />
+    <NavigationProperty Name="medicalRecord" Relationship="Self.FK__Patient__idmedic__1B0907CE" FromRole="Patient" ToRole="medicalRecord" />
   </EntityType>
-  <Association Name="FK__Admin__idAssista__5DCAEF64">
+  <Association Name="FK__Admin__idAssista__15502E78">
     <End Role="Assistant" Type="Self.Assistant" Multiplicity="0..1" />
     <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
     <ReferentialConstraint>
@@ -157,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__cardN__693CA210">
+  <Association Name="FK__Appointme__cardN__20C1E124">
     <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,7 +169,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__idMed__68487DD7">
+  <Association Name="FK__Appointme__idMed__1FCDBCEB">
     <End Role="Medic" Type="Self.Medic" Multiplicity="1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -181,7 +181,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Appointme__idmed__6A30C649">
+  <Association Name="FK__Appointme__idmed__21B6055D">
     <End Role="medicalPrescription" Type="Self.medicalPrescription" Multiplicity="0..1" />
     <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -193,7 +193,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__AspNetUse__idRol__6EF57B66">
+  <Association Name="FK__AspNetUse__idRol__267ABA7A">
     <End Role="AspNetRole" Type="Self.AspNetRole" Multiplicity="1" />
     <End Role="AspNetUser" Type="Self.AspNetUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -233,7 +233,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Assistant__idMed__5AEE82B9">
+  <Association Name="FK__Assistant__idMed__1273C1CD">
     <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
     <End Role="Assistant" Type="Self.Assistant" Multiplicity="*" />
     <ReferentialConstraint>
@@ -245,7 +245,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Patient__idMedic__60A75C0F">
+  <Association Name="FK__Patient__idMedic__1A14E395">
     <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
     <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
     <ReferentialConstraint>
@@ -257,15 +257,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__medicalRe__cardN__6383C8BA">
-    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
-    <End Role="medicalRecord" Type="Self.medicalRecord" Multiplicity="*" />
+  <Association Name="FK__Patient__idmedic__1B0907CE">
+    <End Role="medicalRecord" Type="Self.medicalRecord" Multiplicity="0..1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Patient">
-        <PropertyRef Name="cardNumber" />
+      <Principal Role="medicalRecord">
+        <PropertyRef Name="idmedicalRecords" />
       </Principal>
-      <Dependent Role="medicalRecord">
-        <PropertyRef Name="cardNumber" />
+      <Dependent Role="Patient">
+        <PropertyRef Name="idmedicalRecords" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -285,23 +285,23 @@
     <EntitySet Name="medicalPrescriptions" EntityType="Self.medicalPrescription" />
     <EntitySet Name="medicalRecords" EntityType="Self.medicalRecord" />
     <EntitySet Name="Patients" EntityType="Self.Patient" />
-    <AssociationSet Name="FK__Admin__idAssista__5DCAEF64" Association="Self.FK__Admin__idAssista__5DCAEF64">
+    <AssociationSet Name="FK__Admin__idAssista__15502E78" Association="Self.FK__Admin__idAssista__15502E78">
       <End Role="Assistant" EntitySet="Assistants" />
       <End Role="Admin" EntitySet="Admins" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__cardN__693CA210" Association="Self.FK__Appointme__cardN__693CA210">
+    <AssociationSet Name="FK__Appointme__cardN__20C1E124" Association="Self.FK__Appointme__cardN__20C1E124">
       <End Role="Patient" EntitySet="Patients" />
       <End Role="Appointment" EntitySet="Appointments" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__idMed__68487DD7" Association="Self.FK__Appointme__idMed__68487DD7">
+    <AssociationSet Name="FK__Appointme__idMed__1FCDBCEB" Association="Self.FK__Appointme__idMed__1FCDBCEB">
       <End Role="Medic" EntitySet="Medics" />
       <End Role="Appointment" EntitySet="Appointments" />
     </AssociationSet>
-    <AssociationSet Name="FK__Appointme__idmed__6A30C649" Association="Self.FK__Appointme__idmed__6A30C649">
+    <AssociationSet Name="FK__Appointme__idmed__21B6055D" Association="Self.FK__Appointme__idmed__21B6055D">
       <End Role="medicalPrescription" EntitySet="medicalPrescriptions" />
       <End Role="Appointment" EntitySet="Appointments" />
     </AssociationSet>
-    <AssociationSet Name="FK__AspNetUse__idRol__6EF57B66" Association="Self.FK__AspNetUse__idRol__6EF57B66">
+    <AssociationSet Name="FK__AspNetUse__idRol__267ABA7A" Association="Self.FK__AspNetUse__idRol__267ABA7A">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
@@ -313,17 +313,17 @@
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
     </AssociationSet>
-    <AssociationSet Name="FK__Assistant__idMed__5AEE82B9" Association="Self.FK__Assistant__idMed__5AEE82B9">
+    <AssociationSet Name="FK__Assistant__idMed__1273C1CD" Association="Self.FK__Assistant__idMed__1273C1CD">
       <End Role="Medic" EntitySet="Medics" />
       <End Role="Assistant" EntitySet="Assistants" />
     </AssociationSet>
-    <AssociationSet Name="FK__Patient__idMedic__60A75C0F" Association="Self.FK__Patient__idMedic__60A75C0F">
+    <AssociationSet Name="FK__Patient__idMedic__1A14E395" Association="Self.FK__Patient__idMedic__1A14E395">
       <End Role="Medic" EntitySet="Medics" />
       <End Role="Patient" EntitySet="Patients" />
     </AssociationSet>
-    <AssociationSet Name="FK__medicalRe__cardN__6383C8BA" Association="Self.FK__medicalRe__cardN__6383C8BA">
-      <End Role="Patient" EntitySet="Patients" />
+    <AssociationSet Name="FK__Patient__idmedic__1B0907CE" Association="Self.FK__Patient__idmedic__1B0907CE">
       <End Role="medicalRecord" EntitySet="medicalRecords" />
+      <End Role="Patient" EntitySet="Patients" />
     </AssociationSet>
     <AssociationSet Name="AspNetUserRole" Association="Self.AspNetUserRole">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />

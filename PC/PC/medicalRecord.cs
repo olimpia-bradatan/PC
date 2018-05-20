@@ -14,6 +14,12 @@ namespace PC
     
     public partial class medicalRecord
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public medicalRecord()
+        {
+            this.Patients = new HashSet<Patient>();
+        }
+    
         public int idmedicalRecords { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public string vaccinations { get; set; }
@@ -23,8 +29,8 @@ namespace PC
         public string allergies { get; set; }
         public string lastControl { get; set; }
         public string info { get; set; }
-        public string cardNumber { get; set; }
     
-        public virtual Patient Patient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patient> Patients { get; set; }
     }
 }

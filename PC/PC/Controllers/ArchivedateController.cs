@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
-
 using iText.Kernel.Pdf;
 using iText.Layout;
-using iText.Pdfa;
 using iText.Layout.Element;
-using PC.Models;
-using System.IO;
-using System.Drawing;
-
 namespace PC.Controllers
 {
     public class ArchiveDateController : Controller
@@ -20,6 +10,7 @@ namespace PC.Controllers
         PCContext db = new PCContext();
 
         // GET: Archivedate/Convert
+        [Authorize(Roles = "Assistant, Patient, Medic")]
         public ActionResult ConvertMedicalPrescription(int idmedicalPrescription)
         {
 
@@ -28,6 +19,7 @@ namespace PC.Controllers
 
         // POST: Archivedate/Convert
         [HttpPost]
+        [Authorize(Roles = "Assistant")]
         public ActionResult ConvertMedicalPrescription(int idmedicalPrescription, medicalPrescription m)
         {
             Appointment a = db.Appointments.Find(idmedicalPrescription);

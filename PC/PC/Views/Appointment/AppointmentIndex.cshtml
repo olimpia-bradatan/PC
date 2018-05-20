@@ -4,11 +4,16 @@
     ViewBag.Title = "AppointmentIndex";
 }
 
-<h2>Your Appointments' List</h2>
-
-<p>
-    @Html.ActionLink("Book an appointment", "AppointmentCreate")
-</p>
+<h3>Your Appointments' List</h3>
+<h3>
+    Date: @DateTime.Now.ToShortDateString()
+</h3>
+@if (User.IsInRole("Patient"))
+{
+    <p>
+        @Html.ActionLink("Book an appointment", "AppointmentCreate")
+    </p>
+}
 
 @if (TempData["Success"] != null)
 {
@@ -38,32 +43,72 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Patient.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Patient.lastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
+    @foreach (var item in Model)
+    {
+        var name = item.Patient.firstName + " " + item.Patient.lastName;
+        if (name == User.Identity.Name)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
 
-        <td>
-            @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", "MedicalPrescription", new {id = item.idmedicalPrescription}, null)
-            @Html.ActionLink("Download PDF", "ConvertMedicalPrescription", "ArchiveDate", new { idmedicalPrescription = item.idmedicalPrescription }, null)
-        </td>
+                <td>
+                    @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", "MedicalPrescription", new { id = item.idmedicalPrescription }, null) |
+                    @Html.ActionLink("Download PDF", "ConvertMedicalPrescription", "ArchiveDate", new { idmedicalPrescription = item.idmedicalPrescription }, null)
+                </td>
 
-        <td>
-            @Html.ActionLink("Edit", "AppointmentEdit", new { id = item.idAppointment }) |
-            @Html.ActionLink("Details", "AppointmentDetails", new { id = item.idAppointment }) |
-            @Html.ActionLink("Delete", "AppointmentDelete", new { id = item.idAppointment })
-        </td>
-    </tr>
-}
+                <td>
+                    @if (User.IsInRole("Assistant"))
+                    {
+                        @Html.ActionLink("Edit", "AppointmentEdit", new { id = item.idAppointment })
+                    }|
+                    @Html.ActionLink("Details", "AppointmentDetails", new { id = item.idAppointment }) |
+                    @Html.ActionLink("Delete", "AppointmentDelete", new { id = item.idAppointment })
+                </td>
+            </tr>
+        }
+        else
+        {
+            if (User.IsInRole("Medic"))
+            {
+                if (DateTime.Now.ToShortDateString().Equals(item.Date.ToString().Split(' ')[0]))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient.firstName)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient.lastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Time)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", "MedicalPrescription", new { id = item.idmedicalPrescription }, null) |
+                            @Html.ActionLink("Download PDF", "ConvertMedicalPrescription", "ArchiveDate", new { idmedicalPrescription = item.idmedicalPrescription }, null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "AppointmentDetails", new { id = item.idAppointment })
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    }
 
 </table>

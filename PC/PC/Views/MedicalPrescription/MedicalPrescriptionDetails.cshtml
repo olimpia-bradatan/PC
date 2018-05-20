@@ -36,6 +36,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = Model.idmedicalPrescription }) |
-    @Html.ActionLink("Back to your Medical Prescription List", "MedicalPrescriptionIndex")
+    @if (!User.IsInRole("Patient"))
+    {
+        @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = Model.idmedicalPrescription })
+    }
 </p>

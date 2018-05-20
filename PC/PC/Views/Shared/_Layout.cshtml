@@ -23,16 +23,18 @@
                     @if (User.IsInRole("Patient"))
                     {
                         <li>@Html.ActionLink("My profile", "PatientIndex", "Patient")</li>
-                        <li>@Html.ActionLink("Create appointment", "AppointmentCreate", "Appointment")</li>
+                        <li>@Html.ActionLink("Book appointment", "AppointmentCreate", "Appointment")</li>
                         <li>@Html.ActionLink("My medical record", "MedicalRecordIndex", "MedicalRecord")</li>
+                        <li>@Html.ActionLink("My appointments","AppointmentIndex", "Appointment")</li>
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Medics", "MedicIndex", "Medic")</li>
-                        <li>@Html.ActionLink("Assistants", "IndexAssistant", "Assistant")</li>
+                        <li>@Html.ActionLink("Manage Medics", "MedicIndex", "Medic")</li>
+                        <li>@Html.ActionLink("Manage Assistants", "IndexAssistant", "Assistant")</li>
                     }
                     @if (User.IsInRole("Medic"))
                     {
+                        <li>@Html.ActionLink("Patients", "PatientIndex", "Patient")</li>
                         <li>@Html.ActionLink("Appointments", "AppointmentIndex", "Appointment")</li>
                     }
                     @if (User.IsInRole("Assistant"))
@@ -41,7 +43,6 @@
                         <li>@Html.ActionLink("Manage patients", "PatientIndex", "Patient")</li>
                         <li>@Html.ActionLink("Manage prescriptions", "MedicalPrescriptionIndex", "MedicalPrescription")</li>
                     }
-                   
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

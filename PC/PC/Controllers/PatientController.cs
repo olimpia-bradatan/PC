@@ -11,7 +11,7 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: Patient
-        [Authorize(Roles = "Patient, Assistant")]
+        [Authorize(Roles = "Patient, Assistant, Medic")]
         public ActionResult PatientIndex()
         {
             return View(db.Patients.ToList());
@@ -23,8 +23,8 @@ namespace PC.Controllers
             return View(db.Patients.Find(id));
         }
 
-        // GET: Patient/Create
-        [Authorize(Users = "assistant@assistant.com")]
+        // GET: Patient/Create 
+        [Authorize(Roles = "Assistant")]
         public ActionResult PatientCreate()
         {
             return View();
@@ -32,7 +32,7 @@ namespace PC.Controllers
 
         // POST: Patient/Create
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult PatientCreate(Patient patient)
         {
             if (ModelState.IsValid)
@@ -63,7 +63,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Edit/5
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult PatientEdit(String id)
         {
             return View(db.Patients.Find(id));
@@ -71,8 +71,8 @@ namespace PC.Controllers
 
         // POST: Patient/Edit/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
-        public ActionResult PatientEdit(String id, Patient patient)
+        [Authorize(Roles = "Assistant")]
+        public ActionResult PatientEdit(string id, Patient patient)
         {
             db.Entry(patient).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
@@ -81,16 +81,16 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Delete/5
-        [Authorize(Users = "assistant@assistant.com")]
-        public ActionResult PatientDelete(String id)
+        [Authorize(Roles = "Assistant")]
+        public ActionResult PatientDelete(string id)
         {
             return View(db.Patients.Find(id));
         }
 
         // POST: Patient/Delete/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
-        public ActionResult PatientDelete(String id, Patient patient)
+        [Authorize(Roles = "Assistant")]
+        public ActionResult PatientDelete(string id, Patient patient)
         {
             try
             {

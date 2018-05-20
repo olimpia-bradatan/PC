@@ -11,19 +11,21 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: MedicalRecord
+        [Authorize(Roles = "Assistant, Medic, Patient")]
         public ActionResult MedicalRecordIndex()
         {
             return View(db.medicalRecords.ToList());
         }
 
         // GET: MedicalRecord/Details/5
+        [Authorize(Roles = "Assistant, Medic, Patient")]
         public ActionResult MedicalRecordDetails(int id)
         {
             return View(db.medicalRecords.Find(id));
         }
 
         // GET: MedicalRecord/Create
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalRecordCreate()
         {
             return View();
@@ -31,16 +33,12 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Create
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalRecordCreate(medicalRecord medicalRecord)
         {
             if (ModelState.IsValid)
             {
                 int ok = 1;
-                /*if (db.medicalRecords.Count() > 0)
-                {
-                            ok = 0;
-                }*/
                 if (ok == 1)
                 {
                     medicalRecord.idmedicalRecords = 1;
@@ -59,7 +57,7 @@ namespace PC.Controllers
         }
 
         // GET: MedicalRecord/Edit/5
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult MedicalRecordEdit(int id)
         {
             return View(db.medicalRecords.Find(id));
@@ -67,25 +65,17 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Edit/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalRecordEdit(int id, medicalRecord medicalRecord)
         {
-            //try
-            //{
-            // TODO: Add update logic here
             db.Entry(medicalRecord).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             TempData["Success"] = "Changes successfully applied to your Medical Record!";
             return RedirectToAction("MedicalRecordIndex");
-            //}
-            //catch
-            //{
-             //   return View();
-            //}
         }
 
         // GET: MedicalRecord/Delete/5
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalRecordDelete(int id)
         {
             return View(db.medicalRecords.Find(id));
@@ -93,7 +83,7 @@ namespace PC.Controllers
 
         // POST: MedicalRecord/Delete/5
         [HttpPost]
-        [Authorize(Users = "assistant@assistant.com")]
+        [Authorize(Roles = "Assistant")]
         public ActionResult MedicalRecordDelete(int id, medicalRecord medicalRecord)
         {
             try
@@ -101,8 +91,6 @@ namespace PC.Controllers
                 db.medicalRecords.Remove(db.medicalRecords.Find(id));
                 db.SaveChanges();
                 TempData["Success"] = "Medical Record successfully deleted!";
-                // TODO: Add delete logic here
-
                 return RedirectToAction("MedicalRecordIndex");
             }
             catch

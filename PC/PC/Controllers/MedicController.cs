@@ -11,6 +11,7 @@ namespace PC.Controllers
     {
         PCContext db = new PCContext();
         // GET: Medic
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicIndex()
         {
             return View(db.Medics.ToList());
@@ -23,6 +24,7 @@ namespace PC.Controllers
         }
 
         // GET: Medic/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicCreate()
         {
             return View();
@@ -30,6 +32,7 @@ namespace PC.Controllers
 
         // POST: Medic/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicCreate(Medic medic)
         {
             if (ModelState.IsValid)
@@ -60,6 +63,7 @@ namespace PC.Controllers
         }
 
         // GET: Medic/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicEdit(int id)
         {
             return View(db.Medics.Find(id));
@@ -67,6 +71,7 @@ namespace PC.Controllers
 
         // POST: Medic/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicEdit(int id, Medic medic)
         {
             db.Entry(medic).State = System.Data.Entity.EntityState.Modified;
@@ -76,6 +81,7 @@ namespace PC.Controllers
         }
 
         // GET: Medic/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicDelete(int id)
         {
             return View(db.Medics.Find(id));
@@ -83,6 +89,7 @@ namespace PC.Controllers
 
         // POST: Medic/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult MedicDelete(int id, Medic medic)
         {
             try
@@ -90,8 +97,6 @@ namespace PC.Controllers
                 db.Medics.Remove(db.Medics.Find(id));
                 db.SaveChanges();
                 TempData["Success"] = "Medic successfully deleted!";
-                // TODO: Add delete logic here
-
                 return RedirectToAction("MedicIndex");
             }
             catch

@@ -43,7 +43,10 @@
                 @Html.DisplayFor(modelItem => item.Free)
             </td>
             <td>
-                @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = item.idmedicalPrescription }) |
+                @if (!User.IsInRole("Patient"))
+                {
+                    @Html.ActionLink("Edit", "MedicalPrescriptionEdit", new { id = item.idmedicalPrescription })
+                }|
                 @Html.ActionLink("Details", "MedicalPrescriptionDetails", new { id = item.idmedicalPrescription }) |
                 @Html.ActionLink("Delete", "MedicalPrescriptionDelete", new { id = item.idmedicalPrescription })
             </td>

@@ -26,19 +26,6 @@ CREATE TABLE [dbo].[Admin] (
     FOREIGN KEY ([idAssistant]) REFERENCES [dbo].[Assistant] ([idAssistant])
 );
 
-
-CREATE TABLE [dbo].[Patient] (
-    [cardNumber]       VARCHAR(20)  NOT NULL,
-    [firstName]        VARCHAR (50) NOT NULL,
-    [lastName]         VARCHAR (50) NOT NULL,
-    [birthDate]        DATE         NOT NULL,
-    [email]            VARCHAR (50) NOT NULL,
-    [idMedic]          INT          NULL,
-    [CNP]              VARCHAR (13) NOT NULL,
-    PRIMARY KEY CLUSTERED ([cardNumber] ASC),
-    FOREIGN KEY ([idMedic]) REFERENCES [dbo].[Medic] ([idMedic])
-);
-
 CREATE TABLE [dbo].[medicalRecord] (
     [idmedicalRecords] INT      IDENTITY (1, 1)     NOT NULL,
     [date]             DATE          NULL,
@@ -49,10 +36,24 @@ CREATE TABLE [dbo].[medicalRecord] (
     [allergies]        VARCHAR (250) NULL,
     [lastControl]      VARCHAR (250) NULL,
     [info]             VARCHAR (250) NULL,
-	[cardNumber]       VARCHAR(20)   NULL,
-    PRIMARY KEY CLUSTERED ([idmedicalRecords] ASC),
-	FOREIGN KEY ([cardNumber]) REFERENCES [dbo].[Patient] ([cardNumber])
+    PRIMARY KEY CLUSTERED ([idmedicalRecords] ASC)	
 );
+
+CREATE TABLE [dbo].[Patient] (
+    [cardNumber]       VARCHAR(20)  NOT NULL,
+    [firstName]        VARCHAR (50) NOT NULL,
+    [lastName]         VARCHAR (50) NOT NULL,
+    [birthDate]        DATE         NOT NULL,
+    [email]            VARCHAR (50) NOT NULL,
+    [idMedic]          INT          NULL,
+    [CNP]              VARCHAR (13) NOT NULL,
+	[idmedicalRecords] INT          NULL,
+    PRIMARY KEY CLUSTERED ([cardNumber] ASC),
+    FOREIGN KEY ([idMedic]) REFERENCES [dbo].[Medic] ([idMedic]),
+	FOREIGN KEY ([idMedicalRecords]) REFERENCES [dbo].[medicalRecord] ([idMedicalRecords])
+);
+
+
 
 CREATE TABLE [dbo].[medicalPrescription] (
     [idmedicalPrescription] INT       IDENTITY (1, 1)    NOT NULL,

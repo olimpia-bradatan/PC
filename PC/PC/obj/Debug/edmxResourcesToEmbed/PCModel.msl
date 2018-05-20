@@ -116,7 +116,6 @@
           <ScalarProperty Name="allergies" ColumnName="allergies" />
           <ScalarProperty Name="lastControl" ColumnName="lastControl" />
           <ScalarProperty Name="info" ColumnName="info" />
-          <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -130,6 +129,7 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="idMedic" ColumnName="idMedic" />
           <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="idmedicalRecords" ColumnName="idmedicalRecords" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
