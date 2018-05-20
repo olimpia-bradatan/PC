@@ -121,6 +121,24 @@ namespace PC.Controllers
         {
             try
             {
+                var appointmentData = from row in db.Appointments
+                                      where row.idAppointment == id
+                                      select row;
+
+                var appointmentFound = appointmentData.First() ?? null;
+
+                var appointmentTime = appointmentFound.Time ?? DateTime.Now.TimeOfDay;
+                var appointmentDate = appointmentFound.Date ?? DateTime.Now.Date;
+                DateTime result = appointmentDate + appointmentTime;
+
+                var hours = (result - DateTime.Now).TotalHours;
+
+                if (hours < 24)
+                {
+                    TempData["ConditionsNotMet"] = "You can only cancel an appointment at least 24 hours before!";
+                    return RedirectToAction("AppointmentIndex");
+                }
+
                 db.Appointments.Remove(db.Appointments.Find(id));
                 db.SaveChanges();
                 TempData["Success"] = "Appointment successfully cancelled!";

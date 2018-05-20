@@ -23,6 +23,13 @@
     TempData["Success"] = null;
 }
 
+@if (TempData["ConditionsNotMet"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @TempData["ConditionsNotMet"].ToString()
+    </div>
+    TempData["ConditionsNotMet"] = null;
+}
 <table class="table">
     <tr>
         <th>
