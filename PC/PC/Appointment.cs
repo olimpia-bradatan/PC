@@ -11,13 +11,28 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Appointment
     {
         public int idAppointment { get; set; }
+
         public int idMedic { get; set; }
+
+        [Display(Name = "Health card number*")]
+        [Required]
+        [RegularExpression("[0-9]{20,20}", ErrorMessage = "The health card number must contain exactly 20 digits!")]
         public string cardNumber { get; set; }
+
+        [Display(Name = "Appointment date*")]
+        [DataType(DataType.Date)]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Date { get; set; }
+
+        [Display(Name = "Appointment time*")]
+        [DataType(DataType.Time)]
+        [Required]
         public Nullable<System.TimeSpan> Time { get; set; }
         public Nullable<int> idmedicalPrescription { get; set; }
     

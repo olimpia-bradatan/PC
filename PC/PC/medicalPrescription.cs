@@ -11,7 +11,8 @@ namespace PC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class medicalPrescription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,18 @@ namespace PC
         }
     
         public int idmedicalPrescription { get; set; }
+
+
+        [Display(Name = "Diagnostic*")]
+        [Required]
         public string Diagnostic { get; set; }
+
+        [Display(Name = "Medication*")]
+        [Required]
         public string Medication { get; set; }
+
+        [Display(Name = "Free medication*")]
+        [Required]
         public bool Free { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
