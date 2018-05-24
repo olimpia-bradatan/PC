@@ -22,6 +22,10 @@ namespace PC
         }
     
         public int idmedicalRecords { get; set; }
+
+        [Display(Name = "Last control date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> date { get; set; }
         [Display(Name = "Vaccinations")]
         public string vaccinations { get; set; }

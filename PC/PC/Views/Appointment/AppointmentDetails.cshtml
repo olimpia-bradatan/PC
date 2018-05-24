@@ -56,7 +56,16 @@
 
     </dl>
 </div>
+@if (User.IsInRole("Assistant"))
+{
 <p>
     @Html.ActionLink("Edit", "AppointmentEdit", new { id = Model.idAppointment }) |
     @Html.ActionLink("Back to your Appointments' List", "AppointmentIndex")
 </p>
+}
+@if (User.IsInRole("Medic") || User.IsInRole("Patient"))
+{
+    <p>
+        @Html.ActionLink("Back to your Appointments' List", "AppointmentIndex")
+    </p>
+}

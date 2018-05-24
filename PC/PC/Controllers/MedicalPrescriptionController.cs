@@ -40,12 +40,12 @@ namespace PC.Controllers
                     db.medicalPrescriptions.Add(medicalPrescription);
                     db.SaveChanges();
                     TempData["Success"] = "Medical Prescription successfully submitted!";
-                    return RedirectToAction("MedicalPrescriptionIndex");
+                    return RedirectToAction("AppointmentIndex", "Appointment");
                 }
                 else
                 {
                     TempData["Warning"] = "Medical Prescription already exists associated to this pacient!";
-                    return RedirectToAction("MedicalPrescriptionEdit");
+                    return RedirectToAction("AppointmentIndex", "Appointment");
                 }
             }
             return View();
@@ -65,8 +65,15 @@ namespace PC.Controllers
         {
             db.Entry(medicalPrescription).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
+            Appointment a = db.Appointments.Where(u => u.idmedicalPrescription == id).FirstOrDefault();
+            Patient p = db.Patients.Find(a.cardNumber);
+            medicalRecord m = db.medicalRecords.Find(p.idmedicalRecords);
+            m.previousDiseases = m.previousDiseases + ", " + medicalPrescription.Diagnostic;
+            m.date = a.Date;
+            db.Entry(m).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
             TempData["Success"] = "Changes successfully applied to your Medical Prescription!";
-            return RedirectToAction("MedicalPrescriptionIndex");
+            return RedirectToAction("AppointmentIndex", "Appointment");
         }
 
         // GET: MedicalPrescription/Delete/5

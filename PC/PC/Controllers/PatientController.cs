@@ -48,6 +48,10 @@ namespace PC.Controllers
                 if (ok == 1)
                 {
                     patient.idMedic = 1;
+                    medicalRecord m = new medicalRecord();
+                    db.medicalRecords.Add(m);
+                    db.SaveChanges();
+                    patient.idmedicalRecords = db.medicalRecords.ToList().Last().idmedicalRecords;
                     db.Patients.Add(patient);
                     db.SaveChanges();
                     TempData["Success"] = "Patient successfully added to the database!";
@@ -63,7 +67,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Edit/5
-        [Authorize(Roles = "Assistant")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult PatientEdit(String id)
         {
             return View(db.Patients.Find(id));
@@ -71,7 +75,7 @@ namespace PC.Controllers
 
         // POST: Patient/Edit/5
         [HttpPost]
-        [Authorize(Roles = "Assistant")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult PatientEdit(string id, Patient patient)
         {
             db.Entry(patient).State = System.Data.Entity.EntityState.Modified;
@@ -81,7 +85,7 @@ namespace PC.Controllers
         }
 
         // GET: Patient/Delete/5
-        [Authorize(Roles = "Assistant")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult PatientDelete(string id)
         {
             return View(db.Patients.Find(id));
@@ -89,7 +93,7 @@ namespace PC.Controllers
 
         // POST: Patient/Delete/5
         [HttpPost]
-        [Authorize(Roles = "Assistant")]
+        [Authorize(Roles = "Assistant, Medic")]
         public ActionResult PatientDelete(string id, Patient patient)
         {
             try

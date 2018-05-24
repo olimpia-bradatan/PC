@@ -55,7 +55,7 @@ namespace PC.Controllers
                     }
                     else
                     {
-                        TempData["Warning"] = "Assistant already exist!";
+                        TempData["Warning"] = "Assistant already exists!";
                         return RedirectToAction("CreateAssistant");
                     }
                 }
@@ -84,7 +84,7 @@ namespace PC.Controllers
             {
                 db.Entry(assistant).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                TempData["Success"] = "Changes successfully applied to your appointment!";
+                TempData["Success"] = "Changes successfully applied to the assistant!";
             
 
                 return RedirectToAction("IndexAssistant");

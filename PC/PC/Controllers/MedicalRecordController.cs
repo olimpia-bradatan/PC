@@ -45,12 +45,12 @@ namespace PC.Controllers
                     db.medicalRecords.Add(medicalRecord);
                     db.SaveChanges();
                     TempData["Success"] = "Medical Record successfully submitted!";
-                    return RedirectToAction("MedicalRecordIndex");
+                    return RedirectToAction("PatientIndex", "Patient");
                 }
                 else
                 {
                     TempData["Warning"] = "Medical Record already exists associated to this pacient!";
-                    return RedirectToAction("MedicalRecordEdit");
+                    return RedirectToAction("PatientIndex", "Patient");
                 }
             }
             return View();
@@ -71,7 +71,7 @@ namespace PC.Controllers
             db.Entry(medicalRecord).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             TempData["Success"] = "Changes successfully applied to your Medical Record!";
-            return RedirectToAction("MedicalRecordIndex");
+            return RedirectToAction("PatientIndex", "Patient");
         }
 
         // GET: MedicalRecord/Delete/5
