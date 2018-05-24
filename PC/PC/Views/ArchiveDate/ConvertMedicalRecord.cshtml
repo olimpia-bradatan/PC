@@ -1,0 +1,52 @@
+﻿@model PC.medicalRecord
+@{
+    ViewBag.Title = "ConvertMedicalRecord";
+}
+<h2>Convert Medical Record to PDF</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.idmedicalRecords, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.idmedicalRecords, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.idmedicalRecords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.date, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.diseases, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.diseases, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.diseases, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.allergies, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(model => model.allergies, new { disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.allergies, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Convert to PDF" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

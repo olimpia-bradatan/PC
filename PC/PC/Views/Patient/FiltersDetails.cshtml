@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PC.Patient>
+
+
+@using (Html.BeginForm("FiltersDetails", "Patient", FormMethod.Get))
+{
+    <br />
+    <p>
+        Disease name: @Html.TextBox("disease", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicalRecord.diseases)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicalRecord.previousDiseases)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.medicalRecord.diseases)
+            </td>
+            <th>
+                @Html.DisplayFor(model => model.medicalRecord.previousDiseases)
+            </th>
+        </tr>
+    }
+
+</table>
+

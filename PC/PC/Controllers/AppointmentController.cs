@@ -48,6 +48,13 @@ namespace PC.Controllers
                 if (ok == 1)
                 {
                     appointment.idMedic = 1;
+                    medicalPrescription m = new medicalPrescription();
+                    m.Diagnostic = "To be completed";
+                    m.Medication = "To be completed";
+                    m.Free = true;
+                    db.medicalPrescriptions.Add(m);
+                    db.SaveChanges();
+                    appointment.idmedicalPrescription = db.medicalPrescriptions.ToList().Last().idmedicalPrescription;
                     db.Appointments.Add(appointment);
                     db.SaveChanges();
                     TempData["Success"] = "Appointment successfully submitted!";
@@ -81,7 +88,7 @@ namespace PC.Controllers
                                 ok1 = 0;
                         if (ok1 == 1)
                             content = content + availableHours[i] + " | ";
-                        
+
                     }
                     TempData["Warning"] = "Appointment already booked! Times available this day are: " + content;
                 }
@@ -101,10 +108,10 @@ namespace PC.Controllers
         [Authorize(Roles = "Assistant")]
         public ActionResult AppointmentEdit(int id, Appointment appointment)
         {
-                db.Entry(appointment).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                TempData["Success"] = "Changes successfully applied to your appointment!";
-                return RedirectToAction("AppointmentIndex");          
+            db.Entry(appointment).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            TempData["Success"] = "Changes successfully applied to your appointment!";
+            return RedirectToAction("AppointmentIndex");
         }
 
         // GET: Appointment/Delete/5
@@ -148,6 +155,26 @@ namespace PC.Controllers
             {
                 return View();
             }
+        }
+
+        [Authorize(Roles = "Assistant, Medic")]
+        public ActionResult Appointments(string d1, string d2)
+        {
+            if (!String.IsNullOrEmpty(d1) && !String.IsNullOrEmpty(d2))
+            {
+                DateTime firstDate = DateTime.Parse(d1);
+                DateTime lastDate = DateTime.Parse(d2);
+                List<Appointment> appointments = new List<Appointment>();
+                foreach (Appointment a in db.Appointments.ToList())
+                {
+                    if (DateTime.Compare(firstDate, (DateTime)a.Date) <= 0 && DateTime.Compare((DateTime)a.Date, lastDate) <= 0)
+                    {
+                        appointments.Add(a);
+                    }
+                }
+                return View(appointments.ToList());
+            }
+            return View(db.Appointments.ToList());
         }
     }
 }

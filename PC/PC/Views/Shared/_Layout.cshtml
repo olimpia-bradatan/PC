@@ -24,7 +24,6 @@
                     {
                         <li>@Html.ActionLink("My profile", "PatientIndex", "Patient")</li>
                         <li>@Html.ActionLink("Book appointment", "AppointmentCreate", "Appointment")</li>
-                        <li>@Html.ActionLink("My medical record", "MedicalRecordIndex", "MedicalRecord")</li>
                         <li>@Html.ActionLink("My appointments","AppointmentIndex", "Appointment")</li>
                     }
                     @if (User.IsInRole("Admin"))
@@ -35,13 +34,16 @@
                     @if (User.IsInRole("Medic"))
                     {
                         <li>@Html.ActionLink("Patients", "PatientIndex", "Patient")</li>
-                        <li>@Html.ActionLink("Appointments", "AppointmentIndex", "Appointment")</li>
+                        <li>@Html.ActionLink("Today's appointments", "AppointmentIndex", "Appointment")</li>
+                        <li>@Html.ActionLink("Filter by disease", "FiltersDetails", "Patient")</li>
+                        <li>@Html.ActionLink("Appointments over a period of time", "Appointments", "Appointment")</li>
                     }
                     @if (User.IsInRole("Assistant"))
                     {
-                        <li>@Html.ActionLink("Manage appointment", "AppointmentIndex", "Appointment")</li>
+                        <li>@Html.ActionLink("Today's appointments", "AppointmentIndex", "Appointment")</li>
                         <li>@Html.ActionLink("Manage patients", "PatientIndex", "Patient")</li>
-                        <li>@Html.ActionLink("Manage prescriptions", "MedicalPrescriptionIndex", "MedicalPrescription")</li>
+                        <li>@Html.ActionLink("Filter by disease", "FiltersDetails", "Patient")</li>
+                        <li>@Html.ActionLink("Appointments over a period of time", "Appointments", "Appointment")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

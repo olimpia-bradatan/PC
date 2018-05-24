@@ -109,5 +109,25 @@ namespace PC.Controllers
                 return View();
             }
         }
+
+        [Authorize(Roles = "Assistant, Medic")]
+        public ActionResult FiltersDetails(string disease)
+        {
+            if (!String.IsNullOrEmpty(disease))
+            {
+                {
+                    List<Patient> patients = new List<Patient>();
+                    foreach (Patient a in db.Patients.ToList())
+                    {
+                        if (a.medicalRecord.diseases.ToString().Contains(disease) || a.medicalRecord.previousDiseases.ToString().Contains(disease))
+                        {
+                            patients.Add(a);
+                        }
+                    }
+                    return View(patients.ToList());
+                }
+            }
+            return View(db.Patients.ToList());
+        }
     }
 }

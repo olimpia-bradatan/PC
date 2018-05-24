@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PC.Appointment>
+
+
+@using (Html.BeginForm("Appointments", "Appointment", FormMethod.Get))
+{
+    <br />
+    <p>
+        Begin date(mm/dd/yyyy): @Html.TextBox("d1", ViewBag.CurrentFilter as string)
+        End date(mm/dd/yyyy): @Html.TextBox("d2", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.lastName)
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.lastName)
+            </td>
+            <td>
+                @Html.ActionLink("See medical prescription", "MedicalPrescriptionDetails", "MedicalPrescription", new { id = item.idmedicalPrescription }, null) |
+                @Html.ActionLink("Download PDF", "ConvertMedicalPrescription", "ArchiveDate", new { idmedicalPrescription = item.idmedicalPrescription }, null)
+            </td>
+
+            <td>
+                @if (User.IsInRole("Assistant"))
+                {
+                    @Html.ActionLink("Edit", "AppointmentEdit", new { id = item.idAppointment }) 
+                } |
+                @Html.ActionLink("Details", "AppointmentDetails", new { id = item.idAppointment })
+
+            </td>
+        </tr>
+                }
+
+</table>

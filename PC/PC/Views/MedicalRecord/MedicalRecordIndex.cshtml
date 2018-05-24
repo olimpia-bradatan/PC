@@ -34,7 +34,7 @@ else
             @Html.DisplayNameFor(model => model.date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cardNumber)
+            @Html.DisplayNameFor(model => model.diseases)
         </th>
     </tr>
     @foreach (var item in Model)
@@ -46,10 +46,10 @@ else
                     @Html.DisplayFor(modelItem => item.date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.cardNumber)
+                    @Html.DisplayFor(modelItem => item.diseases)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "MedicalRecordDetails", new { id = item.idmedicalRecords })
+                    @Html.ActionLink("Details", "MedicalRecordDetails", new { id = item.idmedicalRecords }) |
                 </td>
             </tr>
         }
